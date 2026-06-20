@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Avrupa Göç · Hayalindeki Dil Okuluna Ulaş</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700;12..96,800&family=Hanken+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['"Bricolage Grotesque"', 'system-ui', 'sans-serif'],
+      },
+      colors: {
+        ink: '#1A1611',
+        paper: '#F2ECE0',
+        coral: '#B0552F',
+        corald: '#8F4324',
+        teal: '#14534B',
+        teald: '#0E3F39',
+        gold: '#D9A23C',
+        mute: '#8A8378',
+      },
+    }
+  }
+}
+</script>
+<style>
+  html { scroll-behavior: smooth; }
+  body { background: #FCFAF5; color: #1A1611; }
+  h1,h2,h3,h4,.dsp{font-family:'Bricolage Grotesque',system-ui,sans-serif}
+  h1{letter-spacing:-.02em} h2{letter-spacing:-.015em} h3{letter-spacing:-.01em}
+  ::selection { background: #B0552F; color: #fff; }
+
+  .reveal { opacity: 0; transform: translateY(26px); transition: opacity .9s cubic-bezier(.2,.7,.2,1), transform .9s cubic-bezier(.2,.7,.2,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.d1 { transition-delay: .1s } .reveal.d2 { transition-delay: .2s } .reveal.d3 { transition-delay: .3s }
+
+  /* scroll-highlight word list */
+  .feat-word { color: #D8CFBE; transition: color .4s ease, transform .4s ease; cursor: default; }
+  .feat-word.active { color: #1A1611; }
+  .feat-word .desc { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .5s ease, opacity .4s ease, margin .4s ease; }
+  .feat-word.active .desc { max-height: 120px; opacity: 1; }
+
+  details > summary { list-style: none; cursor: pointer; }
+  details > summary::-webkit-details-marker { display: none; }
+  details[open] .faq-ico { transform: rotate(45deg); }
+
+  .lift { transition: transform .4s cubic-bezier(.2,.7,.2,1), box-shadow .4s; }
+  .lift:hover { transform: translateY(-5px); }
+
+  .qchip { transition: all .2s ease; }
+  .qchip:hover { border-color: rgba(255,255,255,.5); }
+  .qchip.qsel { background: #B0552F; color: #fff; border-color: #B0552F; }
+
+  .fchip { transition: all .2s ease; cursor: pointer; }
+  .fchip:hover { border-color: #B0552F; }
+  .fchip.fsel { background: #B0552F; color: #fff; border-color: #B0552F; font-weight: 700; }
+  .finput { transition: all .2s ease; }
+  .finput:focus { border-color: #B0552F; box-shadow: 0 0 0 3px rgba(176,85,47,.12); }
+</style>
+</head>
+<body class="font-sans antialiased overflow-x-hidden">
+
+<!-- ============ NAV ============ -->
+<header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-ink/8">
+  <nav class="max-w-7xl mx-auto px-5 sm:px-8 h-16 flex items-center gap-5">
+    <a href="#" class="flex items-center gap-2.5 shrink-0">
+      <img src="assets/logo.webp" alt="Avrupa Göç" class="h-8 w-auto">
+      <span class="font-display font-700 text-[18px] tracking-tight">Avrupa Göç</span>
+    </a>
+    <div class="hidden md:flex items-center gap-2 bg-paper rounded-full px-4 py-2 ml-2 flex-1 max-w-xs text-mute text-[14px]">
+      <span><i class="fa-solid fa-magnifying-glass"></i></span><span>Program, ülke, üniversite ara…</span>
+    </div>
+    <div class="hidden lg:flex items-center gap-7 text-[15px] font-500 text-ink/75 ml-auto">
+      <a href="#programlar" class="hover:text-coral transition">Programlar</a>
+      <a href="#neden" class="hover:text-coral transition">Neden Biz?</a>
+      <a href="#hikayeler" class="hover:text-coral transition">Başarılar</a>
+      <a href="#sss" class="hover:text-coral transition">SSS</a>
+    </div>
+    <a href="#basla" class="ml-auto lg:ml-0 bg-coral hover:bg-corald text-white text-[14px] font-600 px-5 py-2.5 rounded-full transition">Ücretsiz Görüşme</a>
+  </nav>
+</header>
+
+<!-- ============ HERO (full-bleed) ============ -->
+<section class="relative h-[82vh] min-h-[560px] w-full overflow-hidden text-white">
+  <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+    <source src="assets/hero.mp4" type="video/mp4">
+  </video>
+  <div class="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/25 to-ink/35"></div>
+  <div class="relative z-10 max-w-7xl mx-auto px-5 sm:px-8 h-full flex flex-col justify-end pb-16 sm:pb-20">
+    <span class="reveal in inline-flex items-center gap-2 bg-white/15 backdrop-blur w-max px-4 py-1.5 rounded-full text-[13px] font-600 mb-5">
+      <span class="h-2 w-2 rounded-full bg-coral"></span> 1 yılda 500 öğrenci · 8 ülke
+    </span>
+    <h1 class="reveal in d1 font-display font-800 text-[40px] sm:text-[62px] lg:text-[74px] leading-[.95] tracking-tight max-w-4xl">
+      Hayalindeki dil okuluna Avrupa Göç ile ulaş.
+    </h1>
+    <p class="reveal in d2 mt-5 text-[17px] sm:text-[19px] text-white/85 max-w-xl">1 yılda 500 öğrencinin Avrupa hayalini gerçekleştirmenin gururunu yaşıyoruz.</p>
+    <div class="reveal in d3 mt-7 flex flex-wrap items-center gap-3">
+      <a href="#basla" class="bg-coral hover:bg-corald text-white font-700 px-8 py-4 rounded-full transition shadow-lg shadow-coral/30 text-[16px]">Ücretsiz Uygunluk Görüşmesi Al →</a>
+      <a href="#programlar" class="text-white/90 font-600 px-6 py-4 rounded-full border border-white/30 hover:bg-white/10 transition">Programları Keşfet</a>
+    </div>
+    <p class="reveal in d3 mt-3 text-white/75 text-[13.5px]"><i class="fa-regular fa-clock"></i> 2 dakika sürer · Yükümlülük yok · İstersen direkt WhatsApp'tan ulaş</p>
+  </div>
+</section>
+
+<!-- ============ TRUST / LEGITIMACY STRIP (aile güveni) ============ -->
+<section class="border-b border-ink/8 bg-paper">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-4 flex flex-wrap items-center justify-center gap-x-7 gap-y-2 text-[13.5px] sm:text-[14px] font-500 text-ink/70">
+    <span class="inline-flex items-center gap-2"><span class="text-coral"><i class="fa-solid fa-check"></i></span> Resmî eğitim danışmanlığı</span>
+    <span class="text-ink/15 hidden sm:inline">•</span>
+    <span class="inline-flex items-center gap-2"><span class="text-coral"><i class="fa-solid fa-location-dot"></i></span> Ankara merkez ofis</span>
+    <span class="text-ink/15 hidden sm:inline">•</span>
+    <span class="inline-flex items-center gap-2"><span class="text-coral"><i class="fa-solid fa-graduation-cap"></i></span> Gerçek öğrenciler, gerçek üniversiteler</span>
+    <span class="text-ink/15 hidden sm:inline">•</span>
+    <span class="inline-flex items-center gap-2"><span class="text-coral"><i class="fa-brands fa-whatsapp"></i></span> WhatsApp'tan anında destek</span>
+  </div>
+</section>
+
+<!-- ============ 3 VALUE COLUMNS ============ -->
+<section class="max-w-6xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+  <div class="grid sm:grid-cols-3 gap-10 sm:gap-8">
+    <div class="reveal text-center sm:text-left">
+      <div class="h-12 w-12 rounded-2xl bg-coral/10 text-coral grid place-items-center text-2xl mx-auto sm:mx-0">🏆</div>
+      <h3 class="font-display font-700 text-lg mt-4">Binlerce Başarılı Başvuru</h3>
+      <p class="text-mute text-[14.5px] mt-1.5 leading-relaxed">1 yılda 500 öğrencinin Avrupa hayalini gerçeğe dönüştürdük.</p>
+    </div>
+    <div class="reveal d1 text-center sm:text-left">
+      <div class="h-12 w-12 rounded-2xl bg-teal/10 text-teal grid place-items-center text-2xl mx-auto sm:mx-0"><i class="fa-solid fa-check"></i></div>
+      <h3 class="font-display font-700 text-lg mt-4">%100 Kabul Garantisi</h3>
+      <p class="text-mute text-[14.5px] mt-1.5 leading-relaxed">Üniversite & vize kabul garantisi ile güvenle ilerle.</p>
+    </div>
+    <div class="reveal d2 text-center sm:text-left">
+      <div class="h-12 w-12 rounded-2xl bg-gold/20 text-ink grid place-items-center text-2xl mx-auto sm:mx-0">★</div>
+      <h3 class="font-display font-700 text-lg mt-4">Uzman Kadro</h3>
+      <p class="text-mute text-[14.5px] mt-1.5 leading-relaxed">Kişiselleştirilmiş danışmanlık ve premium hizmet kalitesi.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SENİN YOLUN + UYGUNLUK TESTİ ============ -->
+<section id="basla" class="max-w-7xl mx-auto px-5 sm:px-8 pb-6">
+  <div class="text-center mb-10">
+    <span class="reveal text-coral font-700 text-[13px] tracking-[.15em] uppercase">Nereden başlıyorsun?</span>
+    <h2 class="reveal d1 font-display font-800 text-[28px] sm:text-[42px] tracking-tight mt-3">3 adımda Avrupa'ya</h2>
+  </div>
+  <div class="grid sm:grid-cols-3 gap-4 mb-12">
+    <div class="reveal bg-paper rounded-2xl p-6">
+      <span class="h-9 w-9 grid place-items-center rounded-full bg-coral text-white font-800">1</span>
+      <h3 class="font-display font-700 text-lg mt-4">Ücretsiz uygunluk görüşmesi</h3>
+      <p class="text-mute text-[14px] mt-1.5 leading-relaxed">2 dakikada hedefini anla, sana uygun mu birlikte görelim.</p>
+    </div>
+    <div class="reveal d1 bg-paper rounded-2xl p-6">
+      <span class="h-9 w-9 grid place-items-center rounded-full bg-teal text-white font-800">2</span>
+      <h3 class="font-display font-700 text-lg mt-4">Sana özel yol haritası</h3>
+      <p class="text-mute text-[14px] mt-1.5 leading-relaxed">Uzman danışmanın ülke, üniversite ve takvimini birlikte çıkarır.</p>
+    </div>
+    <div class="reveal d2 bg-paper rounded-2xl p-6">
+      <span class="h-9 w-9 grid place-items-center rounded-full bg-ink text-white font-800">3</span>
+      <h3 class="font-display font-700 text-lg mt-4">Başvuru & vize, yanındayız</h3>
+      <p class="text-mute text-[14px] mt-1.5 leading-relaxed">Evraktan vizeye kadar tüm süreci biz yönetiriz.</p>
+    </div>
+  </div>
+
+  <!-- mini eligibility quiz -->
+  <div class="reveal bg-ink text-white rounded-[2rem] p-6 sm:p-10 shadow-xl">
+    <div class="flex flex-wrap items-end justify-between gap-4">
+      <div>
+        <span class="text-coral font-700 text-[13px] tracking-[.15em] uppercase">30 saniyelik uygunluk testi</span>
+        <h3 class="font-display font-800 text-[26px] sm:text-[36px] tracking-tight mt-2">Avrupa sana uygun mu? Hemen öğren.</h3>
+      </div>
+      <p class="text-white/55 text-[14px] max-w-xs">3 soru cevapla, profiline uygun yolu ve ücretsiz görüşme adımını anında görelim.</p>
+    </div>
+
+    <div id="quizForm" class="mt-8 space-y-6">
+      <div>
+        <p class="font-600 text-white/90 mb-3">1 · Hedefin ne?</p>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="hedef" data-val="Lisans">Lisans</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="hedef" data-val="Yüksek Lisans">Yüksek Lisans</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="hedef" data-val="Dil Kursu">Dil Kursu</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="hedef" data-val="Work & Travel">Work & Travel</button>
+        </div>
+      </div>
+      <div>
+        <p class="font-600 text-white/90 mb-3">2 · Almanca seviyen?</p>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="dil" data-val="Yok / yeni başlıyorum">Yok / yeni başlıyorum</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="dil" data-val="Başlangıç (A)">Başlangıç (A)</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="dil" data-val="Orta ve üzeri (B+)">Orta ve üzeri (B+)</button>
+        </div>
+      </div>
+      <div>
+        <p class="font-600 text-white/90 mb-3">3 · Ne zaman başlamak istiyorsun?</p>
+        <div class="flex flex-wrap gap-2.5">
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="zaman" data-val="Bu yıl">Bu yıl</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="zaman" data-val="Gelecek yıl">Gelecek yıl</button>
+          <button type="button" class="qchip border border-white/20 rounded-full px-4 py-2 text-[14px] font-500" data-group="zaman" data-val="Henüz araştırıyorum">Henüz araştırıyorum</button>
+        </div>
+      </div>
+      <button id="quizGo" type="button" disabled class="mt-2 bg-coral text-white font-700 px-8 py-3.5 rounded-full opacity-50 pointer-events-none transition">Sonucumu gör →</button>
+    </div>
+
+    <div id="quizResult" class="hidden mt-8">
+      <div class="bg-white/5 rounded-2xl p-6 sm:p-7 ring-1 ring-white/10">
+        <p class="font-display font-800 text-2xl">🎉 Profiline uygun programlarımız var!</p>
+        <p class="text-white/70 mt-2 leading-relaxed">Ücretsiz görüşmede sana özel ülke, üniversite ve takvim planını birlikte çıkaralım. Yükümlülük yok, baskı yok.</p>
+        <div class="mt-5 flex flex-wrap gap-3">
+          <a id="quizWa" href="#" class="bg-[#25D366] hover:brightness-95 text-white font-700 px-6 py-3.5 rounded-full transition">WhatsApp'tan sonucumu al →</a>
+          <a href="tel:+905491194764" class="border border-white/25 text-white font-600 px-6 py-3.5 rounded-full hover:bg-white/10 transition">veya hemen ara</a>
+          <a href="#gorusme" class="text-white/65 underline underline-offset-4 self-center px-2">formu doldurmayı tercih ederim</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON · WHY AVRUPA GÖÇ ============ -->
+<section id="neden" class="bg-ink text-white py-20 sm:py-28">
+  <div class="max-w-6xl mx-auto px-5 sm:px-8">
+    <div class="text-center mb-12">
+      <span class="reveal text-coral font-700 text-[13px] tracking-[.15em] uppercase">Neden Avrupa Göç?</span>
+      <h2 class="reveal d1 font-display font-800 text-[30px] sm:text-[48px] tracking-tight mt-3">Diğerleriyle karşılaştır, farkı gör.</h2>
+      <p class="reveal d2 text-white/55 mt-4 max-w-xl mx-auto">Çoğu danışmanlık bilgi yığını sunar. Biz garantili, kişisel ve şeffaf bir süreç sunarız.</p>
+    </div>
+
+    <div class="reveal overflow-hidden rounded-3xl ring-1 ring-white/10">
+      <!-- header row -->
+      <div class="grid grid-cols-[1.4fr_1fr_1fr]">
+        <div class="p-4 sm:p-5"></div>
+        <div class="p-4 sm:p-5 text-center bg-coral text-white">
+          <p class="font-display font-800 text-lg sm:text-xl">Avrupa Göç</p>
+        </div>
+        <div class="p-4 sm:p-5 text-center bg-white/5 text-white/60">
+          <p class="font-display font-700 text-lg sm:text-xl">Diğer Danışmanlıklar</p>
+        </div>
+      </div>
+      <!-- rows -->
+      <div id="cmp" class="divide-y divide-white/10 text-[14px] sm:text-[15px]"></div>
+    </div>
+    <p class="reveal text-center text-white/45 text-[13px] mt-6">Karşılaştırma; tipik danışmanlık hizmetleriyle Avrupa Göç hizmet standartlarının genel kıyasıdır.</p>
+    <div class="reveal text-center mt-8">
+      <a href="#gorusme" class="inline-block bg-coral hover:bg-corald text-white font-600 px-8 py-3.5 rounded-full transition">Farkı ücretsiz görüşmede yaşa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED PROGRAMS (tagged cards) ============ -->
+<section id="programlar" class="max-w-7xl mx-auto px-5 sm:px-8 pb-16 sm:pb-20">
+  <h2 class="reveal font-display font-800 text-[28px] sm:text-[40px] tracking-tight mb-8">Öne çıkan programlar</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <!-- Lisans -->
+    <article class="reveal lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <div class="relative h-48"><img src="assets/net/net4.jpg" class="w-full h-full object-cover" alt="">
+        <span class="absolute top-3 left-3 bg-coral text-white text-[12px] font-700 px-3 py-1 rounded-full">Lisans</span></div>
+      <div class="p-6">
+        <h3 class="font-display font-700 text-xl">Lisans Eğitimi</h3>
+        <p class="text-mute text-[14px] mt-1.5 leading-relaxed">Avrupa'nın prestijli üniversitelerinde lisans eğitimi ile kariyerini şekillendir.</p>
+        <div class="mt-4 space-y-2 text-[13.5px] text-ink/70">
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>Ücretsiz devlet üniversitesi</p>
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>Vize & başvuru desteği</p>
+        </div>
+        <div class="mt-5 flex items-center justify-between"><span class="font-display font-800 text-teal text-lg">8 Ülke</span><a href="#gorusme" class="text-coral font-600 text-[14px] hover:underline">Detay →</a></div>
+      </div>
+    </article>
+    <!-- Yüksek Lisans -->
+    <article class="reveal d1 lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <div class="relative h-48"><img src="assets/net/net6.jpg" class="w-full h-full object-cover" alt="">
+        <span class="absolute top-3 left-3 bg-teal text-white text-[12px] font-700 px-3 py-1 rounded-full">Master</span></div>
+      <div class="p-6">
+        <h3 class="font-display font-700 text-xl">Yüksek Lisans</h3>
+        <p class="text-mute text-[14px] mt-1.5 leading-relaxed">Uzmanlaşmak istediğin alanda akademik kariyerini geliştir.</p>
+        <div class="mt-4 space-y-2 text-[13.5px] text-ink/70">
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>200+ program seçeneği</p>
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>Uni-Assist süreci bizde</p>
+        </div>
+        <div class="mt-5 flex items-center justify-between"><span class="font-display font-800 text-teal text-lg">200+ Program</span><a href="#gorusme" class="text-coral font-600 text-[14px] hover:underline">Detay →</a></div>
+      </div>
+    </article>
+    <!-- Work and Travel -->
+    <article class="reveal d2 lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <div class="relative h-48"><img src="assets/net/net10.jpg" class="w-full h-full object-cover" alt="">
+        <span class="absolute top-3 left-3 bg-gold text-ink text-[12px] font-700 px-3 py-1 rounded-full">Work & Travel</span></div>
+      <div class="p-6">
+        <h3 class="font-display font-700 text-xl">Work and Travel</h3>
+        <p class="text-mute text-[14px] mt-1.5 leading-relaxed">Çalışarak seyahat et! Avrupa'da hem çalış hem yeni yerler keşfet.</p>
+        <div class="mt-4 space-y-2 text-[13.5px] text-ink/70">
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>Çalışma + seyahat</p>
+          <p class="flex items-center gap-2"><i class="fa-solid fa-check text-teal"></i>Kültürel deneyim</p>
+        </div>
+        <div class="mt-5 flex items-center justify-between"><span class="font-display font-800 text-teal text-lg">Çalışma</span><a href="#gorusme" class="text-coral font-600 text-[14px] hover:underline">Detay →</a></div>
+      </div>
+    </article>
+  </div>
+  <div class="mt-8 flex flex-wrap gap-3">
+    <span class="bg-paper rounded-full px-4 py-2 text-[14px] font-500">+ Dil Kursu (Almanca · İtalyanca · Hollandaca)</span>
+    <span class="bg-paper rounded-full px-4 py-2 text-[14px] font-500">+ Yaz Okulu</span>
+  </div>
+</section>
+
+<!-- ============ BIG STATEMENT ============ -->
+<section class="max-w-5xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+  <h2 class="reveal font-display font-800 text-[30px] sm:text-[48px] leading-[1.06] tracking-tight">
+    Avrupa'da eğitim bir hayal değil, <span class="text-coral">doğru rehberle bir plandır.</span>
+  </h2>
+  <p class="reveal d1 text-mute text-[18px] mt-5 max-w-2xl leading-relaxed">Konfor alanından çıkıp hayatını değiştirecek bir adım atmak istiyorsan, yolculuğun Avrupa Göç ile başlar.</p>
+</section>
+
+<!-- ============ SCROLL-HIGHLIGHT WORD LIST (signature) ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 pb-20 sm:pb-28">
+  <div class="grid lg:grid-cols-2 gap-12 items-start">
+    <!-- sticky image -->
+    <div class="lg:sticky lg:top-24">
+      <div class="rounded-[2rem] overflow-hidden h-[300px] sm:h-[440px] ring-1 ring-ink/8 shadow-lg">
+        <img id="featImg" src="assets/net/net4.jpg" class="w-full h-full object-cover transition-opacity duration-500" alt="">
+      </div>
+    </div>
+    <!-- words -->
+    <div class="space-y-7 sm:space-y-9 py-4">
+      <div class="feat-word active" data-img="assets/net/net4.jpg">
+        <h3 class="font-display font-800 text-[30px] sm:text-[44px] leading-tight tracking-tight">Ücretsiz eğitim</h3>
+        <p class="desc text-mute text-[16px] leading-relaxed mt-2">Almanya devlet üniversitelerinde harç yok, sadece dönemlik sembolik ücret. Kaliteli eğitime erişimi açıyoruz.</p>
+      </div>
+      <div class="feat-word" data-img="assets/surec.webp">
+        <h3 class="font-display font-800 text-[30px] sm:text-[44px] leading-tight tracking-tight">Vize garantisi</h3>
+        <p class="desc text-mute text-[16px] leading-relaxed mt-2">%100 üniversite & vize kabul garantisi. Başvurudan onaya kadar tüm riskleri biz yönetiyoruz.</p>
+      </div>
+      <div class="feat-word" data-img="assets/ekip-grup.webp">
+        <h3 class="font-display font-800 text-[30px] sm:text-[44px] leading-tight tracking-tight">Uzman danışman</h3>
+        <p class="desc text-mute text-[16px] leading-relaxed mt-2">Sana özel bir danışman: üniversite seçiminden vize gününe kadar yanında, kişiselleştirilmiş yol haritası.</p>
+      </div>
+      <div class="feat-word" data-img="assets/net/net9.jpg">
+        <h3 class="font-display font-800 text-[30px] sm:text-[44px] leading-tight tracking-tight">Süreç takibi</h3>
+        <p class="desc text-mute text-[16px] leading-relaxed mt-2">Her adımı şeffafça takip et. Hızlı dönüş ve WhatsApp ile anlık destek, belirsizlik yok.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STATS BAND ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+    <div class="reveal"><p class="font-display font-800 text-4xl sm:text-5xl text-coral">50+</p><p class="text-mute mt-2 text-[14px]">Üniversite</p></div>
+    <div class="reveal d1"><p class="font-display font-800 text-4xl sm:text-5xl text-teal">200+</p><p class="text-mute mt-2 text-[14px]">Program</p></div>
+    <div class="reveal d2"><p class="font-display font-800 text-4xl sm:text-5xl text-coral">8</p><p class="text-mute mt-2 text-[14px]">Ülke</p></div>
+    <div class="reveal d3"><p class="font-display font-800 text-4xl sm:text-5xl text-teal">500</p><p class="text-mute mt-2 text-[14px]">Öğrenci / 1 yılda</p></div>
+  </div>
+</section>
+
+<!-- ============ WORK ABROAD BAND ============ -->
+<section class="px-5 sm:px-8 pb-12">
+  <div class="max-w-7xl mx-auto relative rounded-[2.5rem] overflow-hidden h-[360px]">
+    <img src="assets/net/net2.jpg" class="absolute inset-0 w-full h-full object-cover" alt="">
+    <div class="absolute inset-0 bg-gradient-to-r from-ink/85 via-ink/55 to-ink/20"></div>
+    <div class="relative h-full flex flex-col justify-center px-8 sm:px-14 max-w-xl text-white">
+      <span class="text-gold font-700 text-[13px] tracking-[.15em] uppercase">Work and Travel</span>
+      <h2 class="font-display font-800 text-[28px] sm:text-[42px] leading-[1.04] tracking-tight mt-3">Avrupa'da çalış, gez, keşfet.</h2>
+      <p class="text-white/80 mt-4 leading-relaxed">Çalışarak seyahat et; hem deneyim kazan hem yeni kültürler tanı.</p>
+      <a href="#gorusme" class="mt-6 bg-white text-ink font-600 px-6 py-3 rounded-full w-max hover:bg-paper transition">Daha Fazla →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUCCESS STORIES ============ -->
+<section id="hikayeler" class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+  <h2 class="reveal font-display font-800 text-[28px] sm:text-[42px] tracking-tight mb-10">Başarı hikayeleri</h2>
+  <div class="grid md:grid-cols-3 gap-5">
+    <article class="reveal lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <img src="assets/pelin.webp" class="w-full h-56 object-cover object-top" alt="Pelin Kaya">
+      <div class="p-6"><p class="text-ink/80 text-[15px] leading-relaxed">"Yıllardır hayalini kurduğum Psikoloji eğitimi artık bir gerçek. Bochum Üniversitesi'nde başlıyorum. Avrupa Göç sayesinde bu yolculuk plan değil, başarıya dönüştü."</p><div class="mt-4 pt-4 border-t border-ink/10"><p class="font-700">Pelin Kaya</p><p class="text-mute text-[13px]">Bochum Üniversitesi · Psikoloji</p></div></div>
+    </article>
+    <article class="reveal d1 lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <img src="assets/tarik.webp" class="w-full h-56 object-cover object-top" alt="Tarık Gayretli">
+      <div class="p-6"><p class="text-ink/80 text-[15px] leading-relaxed">"TU Dortmund'da Yazılım Mühendisliği okuyorum. Bu başarı tesadüf değil, doğru danışmanlıkla gelen kararlı bir yolculuk."</p><div class="mt-4 pt-4 border-t border-ink/10"><p class="font-700">Tarık Gayretli</p><p class="text-mute text-[13px]">TU Dortmund · Yazılım Mühendisliği</p></div></div>
+    </article>
+    <article class="reveal d2 lift bg-white rounded-3xl overflow-hidden ring-1 ring-ink/8 shadow-sm">
+      <img src="assets/fatma.webp" class="w-full h-56 object-cover object-top" alt="Fatma Nur Can">
+      <div class="p-6"><p class="text-ink/80 text-[15px] leading-relaxed">"Hochschule Niederrhein'de Diyetisyenlik master programına başladım. Avrupa Göç, sadece yol göstermedi; bu süreci benimle birlikte yaşadı."</p><div class="mt-4 pt-4 border-t border-ink/10"><p class="font-700">Fatma Nur Can</p><p class="text-mute text-[13px]">Hochschule Niederrhein · Master Diyetisyenlik</p></div></div>
+    </article>
+  </div>
+</section>
+
+<!-- ============ ABOUT (yellow accent like smaller earth) ============ -->
+<section class="px-5 sm:px-8 pb-16">
+  <div class="max-w-7xl mx-auto bg-paper rounded-[2.5rem] grid lg:grid-cols-2 gap-10 items-center p-8 sm:p-14">
+    <div>
+      <span class="text-coral font-700 text-[13px] tracking-[.15em] uppercase">Hakkımızda</span>
+      <h2 class="font-display font-800 text-[30px] sm:text-[44px] leading-[1.04] tracking-tight mt-3">"Senin için Gelecek."</h2>
+      <p class="text-ink/65 mt-5 leading-relaxed max-w-md">Üniversite seçiminden vize gününe kadar süreci birlikte yaşayan, alanında deneyimli bir ekibiz. Güvenli başvuru, hızlı süreç ve kişiselleştirilmiş danışmanlık.</p>
+      <div class="mt-6 flex items-center gap-4">
+        <img src="assets/bulent.webp" class="h-12 w-12 rounded-full object-cover ring-2 ring-coral/30" alt="">
+        <div><p class="font-600">Bülent Kayan</p><p class="text-mute text-[13px]">Avrupa Göç · Eğitim Şefi</p></div>
+      </div>
+      <a href="#gorusme" class="mt-7 inline-block bg-gold text-ink font-700 px-7 py-3.5 rounded-full hover:brightness-95 transition">Bizimle Tanış</a>
+    </div>
+    <div class="grid grid-cols-2 gap-4">
+      <img src="assets/ekip-grup.webp" class="rounded-2xl h-44 w-full object-cover" alt="">
+      <img src="assets/kardelen.webp" class="rounded-2xl h-44 w-full object-cover mt-8" alt="">
+      <img src="assets/caglar.webp" class="rounded-2xl h-44 w-full object-cover" alt="">
+      <img src="assets/yusuf.webp" class="rounded-2xl h-44 w-full object-cover mt-8" alt="">
+    </div>
+  </div>
+</section>
+
+<!-- ============ FREE CONSULT FORM (smart CRM lead) ============ -->
+<section id="gorusme" class="max-w-7xl mx-auto px-5 sm:px-8 py-16 sm:py-20">
+  <div class="grid lg:grid-cols-[0.85fr_1.15fr] gap-8 items-start">
+
+    <!-- SOL: ikna bloğu -->
+    <div class="reveal lg:sticky lg:top-24">
+      <span class="text-[13px] font-700 tracking-widest uppercase text-coral">Ücretsiz · 1 dakika</span>
+      <h2 class="font-display font-800 text-[32px] lg:text-[44px] leading-[1.05] tracking-tight mt-2">Görüşmede ne olacak?</h2>
+      <div class="mt-6 space-y-4">
+        <div class="flex gap-4"><span class="shrink-0 grid place-items-center w-9 h-9 rounded-full bg-coral text-white font-800">1</span><p class="text-ink/75 leading-relaxed pt-1">Hedefini ve mevcut durumunu dinliyoruz.</p></div>
+        <div class="flex gap-4"><span class="shrink-0 grid place-items-center w-9 h-9 rounded-full bg-coral text-white font-800">2</span><p class="text-ink/75 leading-relaxed pt-1">Sana uygun ülke ve program ihtimallerini çıkarıyoruz.</p></div>
+        <div class="flex gap-4"><span class="shrink-0 grid place-items-center w-9 h-9 rounded-full bg-coral text-white font-800">3</span><p class="text-ink/75 leading-relaxed pt-1">Dil, maliyet, evrak ve vize risklerini netleştiriyoruz.</p></div>
+      </div>
+      <div class="mt-8 bg-ink text-white rounded-3xl p-6">
+        <p class="font-display font-800 text-lg">Neden çekinmeden bırakabilirsin?</p>
+        <ul class="mt-3 space-y-2 text-white/80 text-[15px]">
+          <li><i class="fa-solid fa-check text-teal"></i>İlk görüşme tamamen ücretsiz</li>
+          <li><i class="fa-solid fa-check text-teal"></i>Satış baskısı yok</li>
+          <li><i class="fa-solid fa-check text-teal"></i>Bilgilerin üçüncü kişilerle paylaşılmaz</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- SAĞ: form kartı -->
+    <div class="reveal bg-white rounded-[32px] shadow-xl ring-1 ring-ink/8 p-6 sm:p-9">
+      <h3 class="font-display font-800 text-[26px] sm:text-[32px] leading-tight">Ücretsiz Avrupa Yol Haritanı Al</h3>
+      <p class="text-ink/60 mt-2">1 dakikada bilgilerini bırak, danışmanımız sana uygun ülke, program ve süreç planıyla dönüş yapsın.</p>
+      <p class="text-[13px] text-coral font-600 mt-3 flex flex-wrap gap-x-2 gap-y-1"><span><i class="fa-solid fa-check"></i> İlk görüşme ücretsiz</span><span class="text-coral/30">·</span><span>Satış baskısı yok</span><span class="text-coral/30">·</span><span>WhatsApp'tan hızlı dönüş</span></p>
+
+      <form id="yolForm" class="mt-7 space-y-7">
+        <!-- 1) Kişisel -->
+        <div>
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">1 · Seninle nasıl iletişime geçelim?</p>
+          <div class="grid sm:grid-cols-2 gap-3">
+            <input id="f_ad" type="text" required placeholder="Ad Soyad" class="finput w-full rounded-xl border border-ink/12 bg-paper px-4 py-3 text-[15px] outline-none">
+            <input id="f_email" type="email" placeholder="E-posta (opsiyonel)" class="finput w-full rounded-xl border border-ink/12 bg-paper px-4 py-3 text-[15px] outline-none">
+          </div>
+          <div class="mt-3 rounded-xl border-2 border-coral/40 bg-coral/5 px-4 py-3">
+            <label class="text-[12px] font-700 text-coral flex items-center gap-1.5"><i class="fa-brands fa-whatsapp"></i> EN HIZLI DÖNÜŞ · WhatsApp numaran</label>
+            <input id="f_tel" type="tel" required placeholder="WhatsApp numaranız" class="finput w-full bg-transparent mt-1 text-[16px] font-600 outline-none placeholder:font-400 placeholder:text-ink/40">
+          </div>
+          <p class="text-[12.5px] text-ink/50 mt-1.5">Danışmanımız uygunluk sonucunu WhatsApp üzerinden iletebilir.</p>
+          <div class="grid grid-cols-2 gap-3 mt-3">
+            <input id="f_sehir" type="text" placeholder="Şehir" class="finput w-full rounded-xl border border-ink/12 bg-paper px-4 py-3 text-[15px] outline-none">
+            <input id="f_yas" type="number" min="14" max="80" placeholder="Yaş" class="finput w-full rounded-xl border border-ink/12 bg-paper px-4 py-3 text-[15px] outline-none">
+          </div>
+        </div>
+
+        <!-- 2) Hedef -->
+        <div data-group-name="hedef">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">2 · Hedefin ne?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Lisans">Lisans</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Yüksek Lisans">Yüksek Lisans</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Dil Okulu">Dil Okulu</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Ausbildung">Ausbildung</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Diploma Denkliği">Diploma Denkliği</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Mavi Kart">Mavi Kart</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İş Arama Vizesi">İş Arama Vizesi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Work & Travel">Work &amp; Travel</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Emin değilim">Emin değilim</button>
+          </div>
+        </div>
+
+        <!-- 3) Ülke -->
+        <div data-group-name="ulke">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">3 · Hangi ülke ilgini çekiyor?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Almanya">Almanya</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İtalya">İtalya</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Hollanda">Hollanda</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İsviçre">İsviçre</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Avusturya">Avusturya</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Belçika">Belçika</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Macaristan">Macaristan</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İspanya">İspanya</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Emin değilim">Emin değilim</button>
+          </div>
+        </div>
+
+        <!-- 4) Durum -->
+        <div data-group-name="durum">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">4 · Şu anki durumun ne?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Lise öğrencisi">Lise öğrencisi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Lise mezunu">Lise mezunu</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Üniversite öğrencisi">Üniversite öğrencisi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Üniversite mezunu">Üniversite mezunu</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Çalışıyorum">Çalışıyorum</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Sağlık alanındayım">Sağlık alanındayım</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Mühendislik / IT">Mühendislik / IT</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Diğer">Diğer</button>
+          </div>
+        </div>
+
+        <!-- 5) Dil -->
+        <div data-group-name="dil">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">5 · Dil seviyen ne durumda?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Almancam yok">Almancam yok</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="A1-A2">A1-A2</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="B1-B2">B1-B2</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="C1+">C1+</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İngilizcem var, Almancam yok">İngilizcem var, Almancam yok</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Emin değilim">Emin değilim</button>
+          </div>
+        </div>
+
+        <!-- 6) Zaman -->
+        <div data-group-name="zaman">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">6 · Ne zaman başlamak istiyorsun?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Hemen">Hemen</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="3 ay içinde">3 ay içinde</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="6 ay içinde">6 ay içinde</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Gelecek yıl">Gelecek yıl</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Sadece araştırıyorum">Sadece araştırıyorum</button>
+          </div>
+        </div>
+
+        <!-- 7) Kaygı -->
+        <div data-group-name="kaygi">
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">7 · Seni en çok düşündüren konu ne?</p>
+          <div class="flex flex-wrap gap-2">
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Vize reddi">Vize reddi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Maliyet">Maliyet</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Dil seviyesi">Dil seviyesi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Ailemi ikna etmek">Ailemi ikna etmek</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Doğru ülke/program seçimi">Doğru ülke/program seçimi</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Denklik">Denklik</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="İş bulma">İş bulma</button>
+            <button type="button" class="fchip border border-ink/15 rounded-full px-3.5 py-2 text-[14px]" data-val="Evrak süreci">Evrak süreci</button>
+          </div>
+        </div>
+
+        <!-- 8) Opsiyonel not -->
+        <div>
+          <p class="text-[12px] font-700 uppercase tracking-wider text-ink/45 mb-3">8 · Eklemek istediğin bir şey var mı? <span class="normal-case text-ink/35 font-500">(opsiyonel)</span></p>
+          <textarea id="f_not" rows="3" placeholder="Örn: hedeflediğin bölüm, son okuduğun okul/bölüm, mezun olduğun alan, özel durumun…" class="finput w-full rounded-xl border border-ink/12 bg-paper px-4 py-3 text-[15px] outline-none resize-none"></textarea>
+        </div>
+
+        <!-- KVKK -->
+        <label class="flex gap-3 items-start cursor-pointer">
+          <input id="f_kvkk" type="checkbox" required class="mt-1 w-5 h-5 accent-[#B0552F] shrink-0">
+          <span class="text-[13.5px] text-ink/65 leading-relaxed">Kişisel verilerimin uygunluk değerlendirmesi ve danışmanlık görüşmesi için işlenmesini kabul ediyorum.<br><span class="text-ink/45">Bilgilerin üçüncü kişilerle paylaşılmaz. Sadece Avrupa Göç danışmanlık süreci için kullanılır.</span></span>
+        </label>
+
+        <!-- CTA -->
+        <div>
+          <button type="submit" class="w-full bg-coral hover:bg-corald text-white font-800 text-lg py-4 rounded-2xl transition shadow-lg flex items-center justify-center gap-2"><i class="fa-brands fa-whatsapp"></i> Yol Haritamı WhatsApp'tan Al</button>
+          <p class="text-center text-[12.5px] text-ink/50 mt-2.5">Danışmanımız ortalama 1 iş günü içinde WhatsApp üzerinden dönüş yapar.</p>
+        </div>
+      </form>
+
+      <!-- BAŞARI -->
+      <div id="yolOk" class="hidden text-center py-10">
+        <div class="text-5xl">🎉</div>
+        <h3 class="font-display font-800 text-2xl mt-3">Yol haritan hazırlanıyor!</h3>
+        <p class="text-ink/65 mt-2 max-w-sm mx-auto">Bilgilerini aldık. Son adım: WhatsApp'tan bize ulaş, danışmanımız sana özel planınla dönsün.</p>
+        <a id="yolWa" href="#" class="inline-flex items-center gap-2 mt-6 bg-[#25D366] hover:brightness-95 text-white font-800 px-7 py-4 rounded-2xl transition"><i class="fa-brands fa-whatsapp"></i> WhatsApp'tan gönder →</a>
+        <details class="mt-8 text-left max-w-md mx-auto bg-paper rounded-2xl ring-1 ring-ink/8 p-4">
+          <summary class="cursor-pointer text-[13px] font-700 text-coral list-none">🔧 CRM'e düşen kayıt (demo önizleme)</summary>
+          <pre id="crmDump" class="text-[12px] text-ink/70 mt-3 whitespace-pre-wrap break-words"></pre>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section id="sss" class="max-w-3xl mx-auto px-5 sm:px-8 py-16 sm:py-24">
+  <h2 class="reveal font-display font-800 text-[28px] sm:text-[42px] tracking-tight text-center mb-10">Sık sorulan sorular</h2>
+  <div class="reveal space-y-3">
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Vize başvuru süresi ne kadar sürer?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Vize başvuru süreci ülkeye ve vize türüne göre değişmektedir. Genellikle öğrenci vizeleri 2-8 hafta, turistik vizeler 1-4 hafta sürmektedir.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Hangi belgeler gereklidir?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Pasaport, fotoğraf, başvuru formu, kabul mektubu (öğrenci vizesi için), finansal belgeler, sağlık sigortası ve uçak bileti rezervasyonu gereklidir.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Almanya'da eğitim ücretsiz mi?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Evet, Almanya'da devlet üniversitelerinde eğitim ücretsizdir. Sadece dönemlik harç (semester fee) ödenir ki bu da genellikle 150-300 Euro arasındadır.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Vize reddedilirse ne yapabilirim?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Vize reddedilirse itiraz hakkınız vardır. Red sebebini öğrenip eksik belgeleri tamamlayarak yeniden başvurabilirsiniz.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Dil yeterliliği şartı var mı?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Evet, çoğu ülkede dil yeterliliği şartı vardır. Almanya için TestDaF veya DSH, İtalya için CILS sınavları gerekebilir.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Çalışma izni alabilir miyim?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Öğrenci vizesi ile genellikle haftada 20 saat çalışma izni verilir. Mezuniyet sonrası iş bulma vizesi (Job Seeker Visa) ile daha uzun süre kalabilirsiniz.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Sağlık sigortası zorunlu mu?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Evet, Avrupa ülkelerinde sağlık sigortası zorunludur. Öğrenciler için özel sağlık sigortası paketleri mevcuttur.</p></details>
+    <details class="group bg-paper rounded-2xl px-6 py-5"><summary class="flex items-center justify-between gap-4 font-600 text-[16px]">Konaklama nasıl ayarlanır?<span class="faq-ico text-coral text-2xl transition-transform shrink-0">+</span></summary><p class="text-ink/60 mt-3 leading-relaxed">Üniversite yurtları, özel yurtlar, paylaşımlı evler veya aile yanı konaklama seçenekleri mevcuttur.</p></details>
+  </div>
+</section>
+
+<!-- ============ BRANDS / PARTNERS BLOCKS ============ -->
+<section class="max-w-7xl mx-auto px-5 sm:px-8 pb-16">
+  <p class="reveal text-mute text-[13px] tracking-[.15em] uppercase font-600 mb-5">Hizmet alanlarımız</p>
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+    <div class="reveal rounded-2xl bg-coral text-white p-6 h-32 flex items-end font-display font-800 text-xl">Lisans</div>
+    <div class="reveal d1 rounded-2xl bg-teal text-white p-6 h-32 flex items-end font-display font-800 text-xl">Yüksek Lisans</div>
+    <div class="reveal d2 rounded-2xl bg-ink text-white p-6 h-32 flex items-end font-display font-800 text-xl">Dil Kursu</div>
+    <div class="reveal d3 rounded-2xl bg-gold text-ink p-6 h-32 flex items-end font-display font-800 text-xl">Work & Travel</div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-ink text-white/75">
+  <div class="max-w-7xl mx-auto px-5 sm:px-8 py-16">
+    <div class="grid md:grid-cols-4 gap-10">
+      <div class="md:col-span-2 max-w-sm">
+        <img src="assets/logo-white.webp" alt="Avrupa Göç" class="h-10 w-auto mb-4">
+        <p class="text-white/55 leading-relaxed text-[15px]">Avrupa'da eğitim yolculuğunda güvenilir rehberin. Hayalindeki dil okuluna birlikte ulaşalım.</p>
+        <div class="mt-5 flex gap-3">
+          <a href="#" class="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-coral transition">in</a>
+          <a href="#" class="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-coral transition">ig</a>
+          <a href="#" class="h-10 w-10 grid place-items-center rounded-full bg-white/10 hover:bg-coral transition">f</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-600 text-white mb-4">Programlar</p>
+        <ul class="space-y-2.5 text-[15px] text-white/55">
+          <li><a href="#programlar" class="hover:text-coral transition">Lisans Eğitimi</a></li>
+          <li><a href="#programlar" class="hover:text-coral transition">Yüksek Lisans</a></li>
+          <li><a href="#programlar" class="hover:text-coral transition">Dil Kursu</a></li>
+          <li><a href="#programlar" class="hover:text-coral transition">Yaz Okulu</a></li>
+          <li><a href="#programlar" class="hover:text-coral transition">Work and Travel</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="font-600 text-white mb-4">İletişim</p>
+        <ul class="space-y-2.5 text-[15px] text-white/55">
+          <li><a href="tel:+903129119663" class="hover:text-coral transition">+90 312 911 96 63</a></li>
+          <li><a href="tel:+905491194764" class="hover:text-coral transition">+90 549 119 47 64</a></li>
+          <li><a href="#" class="hover:text-coral transition">info@avrupagoc.com</a></li>
+          <li class="leading-snug">Barbaros, Tunalı Hilmi Cad. No:81 Yavuz İş Merkezi 5. Kat D:9 06660 Çankaya/Ankara</li>
+          <li class="text-white/45">Hafta içi 09:00–18:00 / Cmt 09:00–13:00</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/10 text-[13px] text-white/40">© 2024 Avrupa Göç Danışmanlığı. Tüm hakları saklıdır.</div>
+  </div>
+</footer>
+
+<!-- floating whatsapp -->
+<a href="https://wa.me/905491194764" class="fixed bottom-6 right-6 z-50 h-14 w-14 grid place-items-center rounded-full bg-[#25D366] text-white shadow-xl hover:scale-110 transition" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" class="h-7 w-7 fill-current"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.518 5.26l-.999 3.648 3.97-1.039zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<script>
+  // comparison rows (built safely via DOM)
+  const cmpData = [
+    ['%100 Üniversite & Vize Kabul Garantisi', 'Var', 'Genelde garanti yok'],
+    ['Sana özel danışman & süreç takibi', 'Baştan sona', 'Sınırlı / standart'],
+    ['Ücretsiz ilk görüşme & aynı gün dönüş', 'Evet', 'Çoğu zaman yavaş'],
+    ['Uni-Assist ve tüm evrak süreci bizde', 'Tamamen', 'Sana bırakılır'],
+    ['WhatsApp ile anlık destek', '7/24 hızlı', 'Sadece mesai içi'],
+    ['Şeffaf ücret, gizli masraf yok', 'Net', 'Ek ücret riski'],
+    ['Kanıtlı başarı', '1 yılda 500 öğrenci', 'Belirsiz'],
+  ];
+  const cmp = document.getElementById('cmp');
+  cmpData.forEach(([label, a, b]) => {
+    const row = document.createElement('div');
+    row.className = 'grid grid-cols-[1.4fr_1fr_1fr] items-center';
+    const c1 = document.createElement('div');
+    c1.className = 'p-4 sm:p-5 font-500 text-white/90';
+    c1.textContent = label;
+    const c2 = document.createElement('div');
+    c2.className = 'p-4 sm:p-5 text-center bg-coral/10';
+    const tick = document.createElement('span');
+    tick.className = 'inline-flex items-center gap-1.5 text-coral font-600';
+    tick.textContent = '✓ ' + a;
+    c2.appendChild(tick);
+    const c3 = document.createElement('div');
+    c3.className = 'p-4 sm:p-5 text-center text-white/40';
+    const cross = document.createElement('span');
+    cross.className = 'inline-flex items-center gap-1.5';
+    cross.textContent = '✕ ' + b;
+    c3.appendChild(cross);
+    row.append(c1, c2, c3);
+    cmp.appendChild(row);
+  });
+
+  // scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // scroll-highlight word list -> active word updates image
+  const words = [...document.querySelectorAll('.feat-word')];
+  const featImg = document.getElementById('featImg');
+  const runFeat = () => {
+    const mid = window.innerHeight * 0.45;
+    let best = null, bestDist = Infinity;
+    words.forEach(w => {
+      const r = w.getBoundingClientRect();
+      const c = r.top + r.height / 2;
+      const d = Math.abs(c - mid);
+      if (d < bestDist) { bestDist = d; best = w; }
+    });
+    words.forEach(w => w.classList.toggle('active', w === best));
+    if (best && best.dataset.img && featImg.getAttribute('src') !== best.dataset.img) {
+      featImg.style.opacity = '0';
+      setTimeout(() => { featImg.src = best.dataset.img; featImg.style.opacity = '1'; }, 220);
+    }
+  };
+  window.addEventListener('scroll', runFeat, { passive: true });
+  runFeat();
+
+  // mini uygunluk testi (eligibility quiz)
+  const quiz = document.getElementById('quizForm');
+  if (quiz) {
+    const groups = ['hedef', 'dil', 'zaman'];
+    const sel = {};
+    const go = document.getElementById('quizGo');
+    quiz.querySelectorAll('.qchip').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const g = btn.dataset.group;
+        quiz.querySelectorAll('.qchip[data-group="' + g + '"]').forEach(b => b.classList.remove('qsel'));
+        btn.classList.add('qsel');
+        sel[g] = btn.dataset.val;
+        if (groups.every(k => sel[k])) {
+          go.disabled = false;
+          go.classList.remove('opacity-50', 'pointer-events-none');
+        }
+      });
+    });
+    go.addEventListener('click', () => {
+      if (!groups.every(k => sel[k])) return;
+      const text = 'Merhaba, uygunluk testini doldurdum.\n' +
+        'Hedef: ' + sel.hedef + '\n' +
+        'Almanca: ' + sel.dil + '\n' +
+        'Başlangıç: ' + sel.zaman + '\n' +
+        'Ücretsiz görüşme almak istiyorum.';
+      document.getElementById('quizWa').href = 'https://wa.me/905491194764?text=' + encodeURIComponent(text);
+      quiz.classList.add('hidden');
+      const res = document.getElementById('quizResult');
+      res.classList.remove('hidden');
+      res.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  // ===== Ücretsiz Avrupa Yol Haritası · CRM lead formu =====
+  (function(){
+    const form = document.getElementById('yolForm');
+    if (!form) return;
+    const sel = {};
+    form.querySelectorAll('.fchip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        const grp = chip.closest('[data-group-name]'); const name = grp.dataset.groupName;
+        grp.querySelectorAll('.fchip').forEach(c => c.classList.remove('fsel'));
+        chip.classList.add('fsel'); sel[name] = chip.dataset.val;
+      });
+    });
+
+    function leadSicakligi(d){
+      let undecided = 0;
+      ['hedef','ulke','dil_seviyesi'].forEach(k => { if ((d[k]||'').toLowerCase().indexOf('emin değilim') > -1) undecided++; });
+      if (d.baslama_zamani === 'Sadece araştırıyorum' || undecided >= 2) return 'Soğuk';
+      if ((d.baslama_zamani === 'Hemen' || d.baslama_zamani === '3 ay içinde') && d.hedef && d.hedef !== 'Emin değilim' && d.telefon) return 'Sıcak';
+      if (d.baslama_zamani === '6 ay içinde' || d.baslama_zamani === 'Gelecek yıl') return 'Orta';
+      return 'Orta';
+    }
+
+    function satisNotu(d){
+      let n = 'Aday';
+      if (d.ulke && d.ulke !== 'Emin değilim') n += ' ' + d.ulke;
+      if (d.hedef && d.hedef !== 'Emin değilim') n += ' ' + d.hedef;
+      n += ' ile ilgileniyor.';
+      if (d.egitim_meslek_durumu) n += ' Durum: ' + d.egitim_meslek_durumu + '.';
+      if (d.dil_seviyesi) n += ' Dil seviyesi ' + d.dil_seviyesi + '.';
+      if (d.baslama_zamani) n += ' ' + d.baslama_zamani + ' başlamak istiyor.';
+      if (d.en_buyuk_kaygi) n += ' En büyük kaygısı: ' + d.en_buyuk_kaygi + '.';
+      let advice;
+      if (d.en_buyuk_kaygi === 'Maliyet') advice = 'İlk aramada toplam maliyet kalemleri ve ödeme planı net anlatılmalı.';
+      else if (d.en_buyuk_kaygi === 'Vize reddi') advice = 'İlk aramada risk analizi ve vize başarı yaklaşımı vurgulanmalı.';
+      else if (d.en_buyuk_kaygi === 'Dil seviyesi') advice = 'İlk aramada dil hazırlık + kademeli plan anlatılmalı.';
+      else if (d.en_buyuk_kaygi === 'Ailemi ikna etmek') advice = 'İlk aramada aileye yönelik şeffaf süreç ve güvence vurgulanmalı.';
+      else if (d.en_buyuk_kaygi === 'Denklik') advice = 'İlk aramada denklik süreci ve örnek vakalar paylaşılmalı.';
+      else if (d.en_buyuk_kaygi === 'İş bulma') advice = 'İlk aramada iş arama vizesi / Mavi Kart ve istihdam yolu anlatılmalı.';
+      else if (d.en_buyuk_kaygi === 'Evrak süreci') advice = 'İlk aramada Uni-Assist ve evrak yönetiminin bizde olduğu vurgulanmalı.';
+      else advice = 'İlk aramada profile uygun yol haritası ve net sonraki adım belirlenmeli.';
+      if (d.hedef === 'Ausbildung') advice = 'Maaşlı Ausbildung modeli ve ilk aydan gelir avantajı öne çıkarılmalı. ' + advice;
+      return n + ' ' + advice;
+    }
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      const d = {
+        ad_soyad: document.getElementById('f_ad').value.trim(),
+        telefon: document.getElementById('f_tel').value.trim(),
+        email: document.getElementById('f_email').value.trim(),
+        sehir: document.getElementById('f_sehir').value.trim(),
+        yas: document.getElementById('f_yas').value.trim(),
+        hedef: sel.hedef || '',
+        ulke: sel.ulke || '',
+        egitim_meslek_durumu: sel.durum || '',
+        dil_seviyesi: sel.dil || '',
+        baslama_zamani: sel.zaman || '',
+        en_buyuk_kaygi: sel.kaygi || '',
+        opsiyonel_not: document.getElementById('f_not').value.trim(),
+        kvkk_onay: document.getElementById('f_kvkk').checked
+      };
+      d.lead_sicakligi = leadSicakligi(d);
+      d.satis_notu = satisNotu(d);
+
+      // CRM kaydı (demo): backend'e POST edilecek temiz nesne
+      console.log('CRM lead →', d);
+      const dump = document.getElementById('crmDump');
+      if (dump) dump.textContent = JSON.stringify(d, null, 2);
+
+      // Kullanıcı dostu WhatsApp mesajı (satış ekibine yapılandırılmış lead)
+      const lines = [
+        '🎯 Ücretsiz Avrupa Yol Haritası Talebi',
+        'Ad Soyad: ' + d.ad_soyad,
+        'Telefon: ' + d.telefon,
+        d.email ? 'E-posta: ' + d.email : '',
+        d.sehir ? 'Şehir: ' + d.sehir : '',
+        d.yas ? 'Yaş: ' + d.yas : '',
+        'Hedef: ' + (d.hedef || '-'),
+        'Ülke: ' + (d.ulke || '-'),
+        'Durum: ' + (d.egitim_meslek_durumu || '-'),
+        'Dil: ' + (d.dil_seviyesi || '-'),
+        'Başlama: ' + (d.baslama_zamani || '-'),
+        'Kaygı: ' + (d.en_buyuk_kaygi || '-'),
+        d.opsiyonel_not ? 'Not: ' + d.opsiyonel_not : ''
+      ].filter(Boolean);
+      document.getElementById('yolWa').href = 'https://wa.me/905491194764?text=' + encodeURIComponent(lines.join('\n'));
+
+      form.classList.add('hidden');
+      const ok = document.getElementById('yolOk');
+      ok.classList.remove('hidden');
+      ok.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  })();
+</script>
+</body>
+</html>

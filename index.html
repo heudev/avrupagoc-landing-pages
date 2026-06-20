@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>Avrupa Göç · Tasarım Adayları</title>
+  <style>
+    :root {
+      --bg: #0b0f17;
+      --card: #141a26;
+      --card-hover: #1b2433;
+      --line: #243044;
+      --text: #eef2f8;
+      --muted: #93a1b5;
+      --accent: #3b82f6;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 50% -10%, #16203a 0%, var(--bg) 60%);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 64px 24px;
+    }
+    .wrap { max-width: 1000px; margin: 0 auto; }
+    .eyebrow {
+      color: var(--accent); font-weight: 700; letter-spacing: .18em;
+      text-transform: uppercase; font-size: 12px; margin-bottom: 14px;
+    }
+    h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 800; line-height: 1.05; letter-spacing: -.02em; }
+    .sub { color: var(--muted); margin-top: 14px; font-size: 17px; max-width: 620px; line-height: 1.6; }
+    .grid {
+      margin-top: 48px; display: grid; gap: 18px;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    .card {
+      display: flex; flex-direction: column; justify-content: space-between;
+      background: var(--card); border: 1px solid var(--line); border-radius: 18px;
+      padding: 26px; text-decoration: none; color: inherit;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease;
+      min-height: 190px;
+    }
+    .card:hover { transform: translateY(-4px); background: var(--card-hover); border-color: var(--accent); }
+    .num {
+      width: 42px; height: 42px; border-radius: 12px; background: rgba(59,130,246,.15);
+      color: var(--accent); font-weight: 800; font-size: 18px;
+      display: flex; align-items: center; justify-content: center; margin-bottom: 18px;
+    }
+    .card h2 { font-size: 20px; font-weight: 700; margin-bottom: 8px; }
+    .card p { color: var(--muted); font-size: 14px; line-height: 1.5; }
+    .open {
+      margin-top: 18px; color: var(--accent); font-weight: 600; font-size: 14px;
+      display: inline-flex; align-items: center; gap: 6px;
+    }
+    .footer { margin-top: 56px; color: var(--muted); font-size: 13px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="eyebrow">Avrupa Göç</div>
+    <h1>Tasarım Adayları</h1>
+    <p class="sub">Aşağıdaki 5 tasarımdan birini seçebilirsin. Her birini açıp incele, beğendiğini söyle.</p>
+
+    <div class="grid">
+      <a class="card" href="/tasarim-1">
+        <div>
+          <div class="num">1</div>
+          <h2>Tasarım 1</h2>
+          <p>Hayalindeki dil okuluna ulaş — odaklı varyant.</p>
+        </div>
+        <span class="open">Aç →</span>
+      </a>
+
+      <a class="card" href="/tasarim-2">
+        <div>
+          <div class="num">2</div>
+          <h2>Tasarım 2</h2>
+          <p>Avrupa'nın en iyi üniversitelerinde eğitime başla.</p>
+        </div>
+        <span class="open">Aç →</span>
+      </a>
+
+      <a class="card" href="/tasarim-3">
+        <div>
+          <div class="num">3</div>
+          <h2>Tasarım 3</h2>
+          <p>Eğitim, kariyer ve yeni yaşam — güçlü hero varyantı.</p>
+        </div>
+        <span class="open">Aç →</span>
+      </a>
+
+      <a class="card" href="/tasarim-4">
+        <div>
+          <div class="num">4</div>
+          <h2>Tasarım 4</h2>
+          <p>Eğitim, kariyer ve yeni yaşam — sade varyant.</p>
+        </div>
+        <span class="open">Aç →</span>
+      </a>
+
+      <a class="card" href="/tasarim-5">
+        <div>
+          <div class="num">5</div>
+          <h2>Tasarım 5</h2>
+          <p>Hayalindeki dil okuluna ulaş — alternatif renk/düzen.</p>
+        </div>
+        <span class="open">Aç →</span>
+      </a>
+    </div>
+
+    <p class="footer">Tek domain altında, her tasarım ayrı bağlantıda yayında.</p>
+  </div>
+</body>
+</html>
